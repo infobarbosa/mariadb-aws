@@ -2,7 +2,7 @@ Author: Prof. Barbosa<br>
 Contact: infobarbosa@gmail.com<br>
 Github: [infobarbosa](https://github.com/infobarbosa)
 
-Nesta aula vamos avaliar de forma rudimentar os modelos de armazenamento InnoDB (linha) e ColumnStore (colunar) disponíveis no MariaDB.
+Neste laboratório vamos avaliar de forma rudimentar os modelos de armazenamento InnoDB (linha) e ColumnStore (colunar) disponíveis no MariaDB.
 
 O objetivo desse laboratório é oferecer ao aluno ambiente onde de familiarização com **MariaDB**.
 
