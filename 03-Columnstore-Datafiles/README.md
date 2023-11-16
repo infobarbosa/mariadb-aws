@@ -8,9 +8,9 @@ Observar como o MariaDB gera data files de colunas em disco.
 
 Vamos navegar para o diretório onde o mariadb armazena os seus arquivos de dados.<br>
 Por padrão estão no diretório `/var/lib/columnstore/data1`:
-```plain
+```
 ls -latr /var/lib/columnstore/data1
-```{{exec}}
+```
 
 Output:
 ```
@@ -28,11 +28,11 @@ root@mariadb-server:/var/lib/columnstore/data1#
 
 ```
 cd /var/lib/columnstore/data1
-```{{exec}}
+```
 
-```plain
+```
 find . -type f -name "*.cdf"
-```{{exec}}
+```
 
 Output:
 ```
@@ -57,7 +57,7 @@ root@mariadb-server:/var/lib/columnstore/data1# find . -type f -name "*.cdf"
 
 ### Dicionário de dados
 Via dicionário de dados é possível identificar a relação entre uma coluna e um arquivo.
-```plain
+```
 mariadb -u root -e "
     select cols.table_schema, cols.table_name, cols.column_name, files.filename
     from information_schema.columnstore_columns cols 
@@ -66,27 +66,27 @@ mariadb -u root -e "
     where cols.table_schema = 'ecommerce'
     and cols.table_name = 'invoices_cs';"
 
-```{{exec}}
+```
 
 Atributo `Description`:
 ```
 grep --binary-files=text --include \*.cdf -r -l -o "WHITE" ./*
-```{{exec}}
+```
 
 ```
 grep --binary-files=text --include \*.cdf -r -l -o "PLAYING CARDS VINTAGE" ./*
-```{{exec}}
+```
 
 ```
 grep --binary-files=text --include \*.cdf -r -l -o "CRYSTAL EARRINGS" ./*
-```{{exec}}
+```
 
 
 Atributo `Country`:
 ```
 grep --binary-files=text --include \*.cdf -r -l -o "United Kingdom" ./*
-```{{exec}}
+```
 
 ```
 grep --binary-files=text --include \*.cdf -r -l -o "Brazil" ./*
-```{{exec}}
+```

@@ -8,9 +8,9 @@ O objetivo desse laboratório é oferecer ao aluno ambiente onde de familiariza�
 
 ### Verificando a instalação
 Execute o comando a seguir para verificar o status de instalação:
-```plain
+```
 tail status-instalacao.txt
-```{{exec}}
+```
 
 O lab estará pronto para uso quando aparecer a última linha:
 ```
