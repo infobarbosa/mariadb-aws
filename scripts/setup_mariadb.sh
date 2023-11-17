@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Instalação iniciada em `date -Is`" >> /tmp/install.log
-echo "Instalação iniciada em `date -Is`" >> /root/status-instalacao.txt
+echo "Instalação iniciada em `date -Is`" >> /tmp/status-instalacao.txt
 sudo apt update -y >> /tmp/install.log
 
 # Pré-requisitos
@@ -49,4 +49,4 @@ sudo apt install -y libjemalloc2 mariadb-backup libmariadb3 mariadb-plugin-colum
 systemctl restart mariadb >> /tmp/install.log
 
 echo "Instalação finalizada em `date -Is`" >> /tmp/install.log
-echo "Instalação finalizada em `date -Is`" >> /root/status-instalacao.txt
+echo "Instalação finalizada em `date -Is`" >> /tmp/status-instalacao.txt
