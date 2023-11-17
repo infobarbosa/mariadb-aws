@@ -18,13 +18,12 @@ echo "`date -Is` - Inicializando o serviço" >> /tmp/install.log
 sudo systemctl start mariadb >> /tmp/install.log
 
 echo "`date -Is` - Criando o usuário barbosa" >> /tmp/install.log
-
-mariadb -e "CREATE USER 'barbosa'@localhost IDENTIFIED BY 'inseguro';" >> /tmp/install.log
+sudo mariadb -e "CREATE USER 'barbosa'@localhost IDENTIFIED BY 'inseguro';" >> /tmp/install.log
 
 echo "`date -Is` - Concedendo acesso administrativo" >> /tmp/install.log
-mariadb -e "GRANT ALL ON *.* TO 'barbosa'@'localhost' IDENTIFIED BY 'inseguro' WITH GRANT OPTION;" >> /tmp/install.log
+sudo mariadb -e "GRANT ALL ON *.* TO 'barbosa'@'localhost' IDENTIFIED BY 'inseguro' WITH GRANT OPTION;" >> /tmp/install.log
 
-mariadb -e "FLUSH PRIVILEGES;" >> /tmp/install.log
+sudo mariadb -e "FLUSH PRIVILEGES;" >> /tmp/install.log
 
 
 echo "`date -Is` - Instalação do engine ColumnStore" >> /tmp/install.log
@@ -46,7 +45,7 @@ echo "`date -Is` - Instalando o plugin mariadb-plugin-columnstore" >> /tmp/insta
 sudo apt install -y libjemalloc2 mariadb-backup libmariadb3 mariadb-plugin-columnstore >> /tmp/install.log
 
 echo "`date -Is` - Reiniciando o serviço" >> /tmp/install.log
-systemctl restart mariadb >> /tmp/install.log
+sudo systemctl restart mariadb >> /tmp/install.log
 
 echo "Instalação finalizada em `date -Is`" >> /tmp/install.log
 echo "Instalação finalizada em `date -Is`" >> /tmp/status-instalacao.txt
