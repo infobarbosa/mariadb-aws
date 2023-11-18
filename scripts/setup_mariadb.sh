@@ -39,8 +39,8 @@ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup >> /tmp/install.lo
 echo "`date -Is` - Tornando o pacote executável" >> /tmp/install.log
 chmod +x mariadb_repo_setup >> /tmp/install.log
 
-echo "`date -Is` - Setup de repositório para a versão mariadb-10.6" >> /tmp/install.log
-sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6" >> /tmp/install.log
+echo "`date -Is` - Setup de repositório para a versão mariadb-11.1" >> /tmp/install.log
+sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-11.1" >> /tmp/install.log
 
 echo "`date -Is` - Atualizando a biblioteca de pacotes" >> /tmp/install.log
 sudo apt update -y >> /tmp/install.log

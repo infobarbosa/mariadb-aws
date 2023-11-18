@@ -76,9 +76,9 @@ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
 chmod +x mariadb_repo_setup
 ```
 
-##### Setup de repositório para a versão mariadb-10.6
+##### Setup de repositório para a versão mariadb-11.1
 ```
-sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-11.1"
 ```
 
 ##### Atualizando a biblioteca de pacotes
