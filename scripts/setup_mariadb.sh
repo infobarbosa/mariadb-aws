@@ -1,7 +1,11 @@
 #!/bin/sh
 
 echo "Instalação iniciada em `date -Is`" >> /tmp/install.log
-echo "Instalação iniciada em `date -Is`" >> /tmp/status-instalacao.txt
+
+echo "`date -Is` - Removendo instalação do MySQL"
+sudo apt remove -y mysql-server
+
+echo "`date -Is` - Atualizando pacotes do sistema"
 sudo apt update -y >> /tmp/install.log
 
 echo "`date -Is` - Instalando pré-requisitos" >> /tmp/install.log
@@ -47,4 +51,3 @@ echo "`date -Is` - Reiniciando o serviço" >> /tmp/install.log
 sudo systemctl restart mariadb >> /tmp/install.log
 
 echo "Instalação finalizada em `date -Is`" >> /tmp/install.log
-echo "Instalação finalizada em `date -Is`" >> /tmp/status-instalacao.txt
