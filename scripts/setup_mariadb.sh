@@ -5,7 +5,6 @@ echo "Instalação iniciada em `date -Is`" >> /tmp/status-instalacao.txt
 sudo apt update -y >> /tmp/install.log
 
 echo "`date -Is` - Instalando pré-requisitos" >> /tmp/install.log
-sudo apt update -y >> /tmp/install.log
 sudo apt install -y wget software-properties-common dirmngr ca-certificates apt-transport-https >> /tmp/install.log
 
 echo "`date -Is` - Executando a instalação" >> /tmp/install.log
