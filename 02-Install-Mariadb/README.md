@@ -18,6 +18,9 @@ sh scripts/setup_mariadb.sh
 #### Removendo instalação do MySQL
 ```
 sudo apt remove -y mysql-server
+```
+
+```
 sudo rm -r /var/lib/mysql
 ```
 
