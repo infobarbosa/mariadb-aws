@@ -57,7 +57,7 @@ echo "`date -Is` - Instalação finalizada." >> /tmp/install.log
 
 echo "`date -Is` - Iniciando setup de schema e carga de dados." >> /tmp/install.log
 
-echo "`date -Is` - Criando o database ecommerce."
+echo "`date -Is` - Criando o database ecommerce."  >> /tmp/install.log
 
 sudo mariadb -e "CREATE DATABASE ecommerce;" >> /tmp/install.log
 
@@ -76,7 +76,7 @@ sudo mariadb -e "
     ) engine=InnoDB;"
 
 ## verificando se deu certo
-echo "`date -Is` - DESCRIBE ecommerce.invoices;"
+echo "`date -Is` - DESCRIBE ecommerce.invoices;"  >> /tmp/install.log
 sudo mariadb -e "DESCRIBE ecommerce.invoices;"  >> /tmp/install.log
 
 echo "`date -Is` - Table ecommerce.invoices_cs com engine ColumnStore" >> /tmp/install.log
@@ -94,10 +94,10 @@ sudo mariadb -e "
     ) engine=ColumnStore;"
 
 ## verificando se deu certo:
-echo "`date -Is` - DESCRIBE ecommerce.invoices_cs;"
+echo "`date -Is` - DESCRIBE ecommerce.invoices_cs;" >> /tmp/install.log
 sudo mariadb -e "DESCRIBE ecommerce.invoices_cs;" >> /tmp/install.log
 
-echo "`date -Is` - Desempacotando invoices.tar.gz"
+echo "`date -Is` - Desempacotando invoices.tar.gz"  >> /tmp/install.log
 tar -xzf assets/data/invoices.tar.gz -C /tmp/ >> /tmp/install.log
 
 echo "`date -Is` - Examinando a estrutura do arquivo" >> /tmp/install.log
