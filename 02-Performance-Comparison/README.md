@@ -5,17 +5,18 @@ Github: [infobarbosa](https://github.com/infobarbosa)
 
 ## Objetivo
 Avaliar de forma rudimentar as performances do modelo de linha versus modelo colunar de armazenamento.
+> Atenção! Os comandos desse tutorial presumem que você está no diretório `mariadb-aws`.
 
 ## A base de dados
 Vamos criar um database `ecommerce`:
 ```
-mariadb -e "CREATE DATABASE ecommerce;"
+sudo mariadb -e "CREATE DATABASE ecommerce;"
 ```
 
 ## Tabelas
 ### `ecommerce.invoices` com engine **InnoDB**
 ```
-mariadb -e "
+sudo mariadb -e "
     CREATE TABLE ecommerce.invoices(
         InvoiceDate text,
         Country text,
@@ -30,12 +31,12 @@ mariadb -e "
 
 Verificando se deu certo:
 ```
-mariadb -e "DESCRIBE ecommerce.invoices;"
+sudo mariadb -e "DESCRIBE ecommerce.invoices;"
 ```
 
 ### `ecommerce.invoices_cs` com engine **ColumnStore**
 ```
-mariadb -e "
+sudo mariadb -e "
     CREATE TABLE ecommerce.invoices_cs(
         InvoiceDate text,
         Country text,
@@ -50,7 +51,7 @@ mariadb -e "
 
 Verificando se deu certo:
 ```
-mariadb -e "DESCRIBE ecommerce.invoices_cs;"
+sudo mariadb -e "DESCRIBE ecommerce.invoices_cs;"
 ```
 
 ## Carga das tabelas
@@ -62,11 +63,11 @@ cd ~
 
 ##### O arquivo `invoices.csv`
 ```
-ls -latr invoices.tar.gz
+ls -latr assets/data/invoices.tar.gz
 ```
 
 ```
-tar -xzf invoices.tar.gz -C /tmp/
+tar -xzf assets/data/invoices.tar.gz -C /tmp/
 ```
 
 Examinando a estrutura do arquivo
@@ -81,7 +82,7 @@ wc -l /tmp/invoices.csv
 
 ### `invoices`
 ```
-mariadb -e "
+sudo mariadb -e "
     LOAD DATA INFILE '/tmp/invoices.csv'
     INTO TABLE ecommerce.invoices
     FIELDS TERMINATED BY ','
@@ -92,12 +93,12 @@ mariadb -e "
 
 Verificando a carga:
 ```
-mariadb -e "select * from ecommerce.invoices limit 10;"
+sudo mariadb -e "select * from ecommerce.invoices limit 10;"
 ```
 
 ### `invoices_cs`
 ```
-mariadb -e "
+sudo mariadb -e "
     LOAD DATA INFILE '/tmp/invoices.csv'
     INTO TABLE ecommerce.invoices_cs
     FIELDS TERMINATED BY ','
@@ -108,13 +109,13 @@ mariadb -e "
 
 Verificando a carga:
 ```
-mariadb -e "select * from ecommerce.invoices_cs limit 10;"
+sudo mariadb -e "select * from ecommerce.invoices_cs limit 10;"
 ```
 
 ### Teste 1 
 #### Consulta analítica
 ```
-mariadb -e "
+sudo mariadb -e "
     select count(distinct StockCode)
           ,max(UnitPrice) mx
           ,min(UnitPrice) mn
@@ -123,7 +124,7 @@ mariadb -e "
 ```
 
 ```
-mariadb -e "
+sudo mariadb -e "
     select count(distinct StockCode)
           ,max(UnitPrice) mx
           ,min(UnitPrice) mn
@@ -133,7 +134,7 @@ mariadb -e "
 
 Medindo o tempo:
 ```
-time { 
+sudo time { 
     mariadb -e "
         select count(distinct StockCode)
             ,max(UnitPrice) mx
@@ -144,7 +145,7 @@ time {
 ```
 
 ```
-time { 
+sudo time { 
     mariadb -e "
         select count(distinct StockCode)
             ,max(UnitPrice) mx
@@ -157,21 +158,21 @@ time {
 ### Teste 2 
 #### Busca linha completa com restrição de valor
 ```
-mariadb -e "
+sudo mariadb -e "
     select * 
     from ecommerce.invoices 
     where InvoiceNo='536365';"
 ```
 
 ```
-mariadb -e "
+sudo mariadb -e "
     select * 
     from ecommerce.invoices_cs 
     where InvoiceNo='536365';"
 ```
 
 ```
-time { 
+sudo time { 
     mariadb -e "
         select * 
         from ecommerce.invoices 
@@ -180,7 +181,7 @@ time {
 ```
 
 ```
-time { 
+sudo time { 
     mariadb -e "
         select * 
         from ecommerce.invoices_cs 
@@ -192,7 +193,7 @@ time {
 
 #### Criando um índice na tabela `ecommerce.invoices`:
 ```
-mariadb -e "ALTER TABLE ecommerce.invoices ADD INDEX invoices_i1 (InvoiceNo);"
+sudo mariadb -e "ALTER TABLE ecommerce.invoices ADD INDEX invoices_i1 (InvoiceNo);"
 ```
 
 ### Teste 3 
@@ -200,21 +201,21 @@ mariadb -e "ALTER TABLE ecommerce.invoices ADD INDEX invoices_i1 (InvoiceNo);"
 #### Consulta indexada
 Repetindo o teste:
 ```
-mariadb -e "
+sudo mariadb -e "
     select * 
     from ecommerce.invoices
     where InvoiceNo='536365';"
 ```
 
 ```
-mariadb -e "
+sudo mariadb -e "
     select * 
     from ecommerce.invoices_cs 
     where InvoiceNo='536365';"
 ```
 
 ```
-time {  
+sudo time {  
     mariadb -e "
         select * 
         from ecommerce.invoices
@@ -223,7 +224,7 @@ time {
 ```
 
 ```
-time {  
+sudo time {  
     mariadb -e "
         select * 
         from ecommerce.invoices_cs
