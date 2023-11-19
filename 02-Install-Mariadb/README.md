@@ -16,6 +16,12 @@ sh scripts/setup_mariadb.sh
 ### Instalação passo-a-passo
 
 #### Removendo instalação do MySQL
+
+Matando o processo
+```
+sudo pkill mysql
+```
+
 ```
 sudo apt remove -y mysql-server
 ```
