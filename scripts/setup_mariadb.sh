@@ -53,4 +53,81 @@ sudo apt install -y libjemalloc2 mariadb-backup libmariadb3 mariadb-plugin-colum
 echo "`date -Is` - Reiniciando o serviço" >> /tmp/install.log
 sudo systemctl restart mariadb >> /tmp/install.log
 
-echo "Instalação finalizada em `date -Is`" >> /tmp/install.log
+echo "`date -Is` - Instalação finalizada." >> /tmp/install.log
+
+echo "`date -Is` - Iniciando setup de schema e carga de dados." >> /tmp/install.log
+
+echo "`date -Is` - Criando o database ecommerce."
+
+sudo mariadb -e "CREATE DATABASE ecommerce;" >> /tmp/install.log
+
+echo "`date -Is` - Tabela ecommerce.invoices com engine InnoDB" >> /tmp/install.log
+
+sudo mariadb -e "
+    CREATE TABLE ecommerce.invoices(
+        InvoiceDate text,
+        Country text,
+        InvoiceNo text,
+        StockCode text,
+        Description text,
+        CustomerID text,
+        Quantity float,
+        UnitPrice float
+    ) engine=InnoDB;"
+
+## verificando se deu certo
+echo "`date -Is` - DESCRIBE ecommerce.invoices;"
+sudo mariadb -e "DESCRIBE ecommerce.invoices;"  >> /tmp/install.log
+
+echo "`date -Is` - Table ecommerce.invoices_cs com engine ColumnStore" >> /tmp/install.log
+
+sudo mariadb -e "
+    CREATE TABLE ecommerce.invoices_cs(
+        InvoiceDate text,
+        Country text,
+        InvoiceNo text,
+        StockCode text,
+        Description text,
+        CustomerID text,
+        Quantity float,
+        UnitPrice float
+    ) engine=ColumnStore;"
+
+## verificando se deu certo:
+echo "`date -Is` - DESCRIBE ecommerce.invoices_cs;"
+sudo mariadb -e "DESCRIBE ecommerce.invoices_cs;" >> /tmp/install.log
+
+echo "`date -Is` - Desempacotando invoices.tar.gz"
+tar -xzf assets/data/invoices.tar.gz -C /tmp/ >> /tmp/install.log
+
+echo "`date -Is` - Examinando a estrutura do arquivo" >> /tmp/install.log
+head /tmp/invoices.csv /tmp/install.log >> /tmp/install.log
+
+echo "`date -Is` - Carga de dados invoices" >> /tmp/install.log
+
+sudo mariadb -e "
+    LOAD DATA INFILE '/tmp/invoices.csv'
+    INTO TABLE ecommerce.invoices
+    FIELDS TERMINATED BY ','
+    ENCLOSED BY '\"'
+    LINES TERMINATED BY '\n'
+    IGNORE 1 ROWS;" >> /tmp/install.log
+
+echo "`date -Is` - Verificando a carga invoices" >> /tmp/install.log
+
+sudo mariadb -e "select * from ecommerce.invoices limit 10;" >> /tmp/install.log
+
+echo "`date -Is` - Carga de dados invoices_cs" >> /tmp/install.log
+
+sudo mariadb -e "
+    LOAD DATA INFILE '/tmp/invoices.csv'
+    INTO TABLE ecommerce.invoices_cs
+    FIELDS TERMINATED BY ','
+    ENCLOSED BY '\"'
+    LINES TERMINATED BY '\n'
+    IGNORE 1 ROWS;" >> /tmp/install.log
+
+echo "`date -Is` - Verificando a carga invoices_cs."  >> /tmp/install.log
+
+sudo mariadb -e "select * from ecommerce.invoices_cs limit 10;" >> /tmp/install.log
+
