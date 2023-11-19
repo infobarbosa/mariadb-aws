@@ -58,7 +58,7 @@ root@mariadb-server:/var/lib/columnstore/data1# find . -type f -name "*.cdf"
 ### Dicionário de dados
 Via dicionário de dados é possível identificar a relação entre uma coluna e um arquivo.
 ```
-mariadb -u root -e "
+sudo mariadb -u root -e "
     select cols.table_schema, cols.table_name, cols.column_name, files.filename
     from information_schema.columnstore_columns cols 
     inner join information_schema.columnstore_files files 
