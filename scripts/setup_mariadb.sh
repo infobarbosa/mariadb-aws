@@ -5,6 +5,7 @@ echo "Instalação iniciada em `date -Is`" >> /tmp/install.log
 echo "`date -Is` - Removendo instalação do MySQL"
 sudo pkill mysql
 sudo apt remove -y mysql-server
+sudo apt autoremove -y
 sudo rm -r /var/lib/mysql
 
 echo "`date -Is` - Atualizando pacotes do sistema"

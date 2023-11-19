@@ -27,6 +27,10 @@ sudo apt remove -y mysql-server
 ```
 
 ```
+sudo apt autoremove -y
+```
+
+```
 sudo rm -r /var/lib/mysql
 ```
 
