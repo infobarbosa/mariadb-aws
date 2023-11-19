@@ -61,12 +61,12 @@ sudo systemctl start mariadb
 
 ##### Criando o usuário barbosa"
 ```
-sudo mariadb -e "CREATE USER 'barbosa'@localhost IDENTIFIED BY 'inseguro';"
+sudo mariadb -e "CREATE USER 'barbosa'@localhost IDENTIFIED BY 'pessimasenha';"
 ```
 
 ##### Concedendo acesso administrativo"
 ```
-sudo mariadb -e "GRANT ALL ON *.* TO 'barbosa'@'localhost' IDENTIFIED BY 'inseguro' WITH GRANT OPTION;"
+sudo mariadb -e "GRANT ALL ON *.* TO 'barbosa'@'localhost' IDENTIFIED BY 'pessimasenha' WITH GRANT OPTION;"
 ```
 
 ```

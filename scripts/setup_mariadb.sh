@@ -24,10 +24,10 @@ echo "`date -Is` - Inicializando o serviço" >> /tmp/install.log
 sudo systemctl start mariadb >> /tmp/install.log
 
 echo "`date -Is` - Criando o usuário barbosa" >> /tmp/install.log
-sudo mariadb -e "CREATE USER 'barbosa'@localhost IDENTIFIED BY 'inseguro';" >> /tmp/install.log
+sudo mariadb -e "CREATE USER 'barbosa'@localhost IDENTIFIED BY 'pessimasenha';" >> /tmp/install.log
 
 echo "`date -Is` - Concedendo acesso administrativo" >> /tmp/install.log
-sudo mariadb -e "GRANT ALL ON *.* TO 'barbosa'@'localhost' IDENTIFIED BY 'inseguro' WITH GRANT OPTION;" >> /tmp/install.log
+sudo mariadb -e "GRANT ALL ON *.* TO 'barbosa'@'localhost' IDENTIFIED BY 'pessimasenha' WITH GRANT OPTION;" >> /tmp/install.log
 
 sudo mariadb -e "FLUSH PRIVILEGES;" >> /tmp/install.log
 
