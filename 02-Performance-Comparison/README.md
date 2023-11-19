@@ -134,8 +134,8 @@ sudo mariadb -e "
 
 Medindo o tempo:
 ```
-sudo time { 
-    mariadb -e "
+time { 
+    sudo mariadb -e "
         select count(distinct StockCode)
             ,max(UnitPrice) mx
             ,min(UnitPrice) mn
@@ -145,8 +145,8 @@ sudo time {
 ```
 
 ```
-sudo time { 
-    mariadb -e "
+time { 
+    sudo mariadb -e "
         select count(distinct StockCode)
             ,max(UnitPrice) mx
             ,min(UnitPrice) mn
@@ -172,8 +172,8 @@ sudo mariadb -e "
 ```
 
 ```
-sudo time { 
-    mariadb -e "
+time { 
+    sudo mariadb -e "
         select * 
         from ecommerce.invoices 
         where InvoiceNo='536365';"; 
@@ -181,8 +181,8 @@ sudo time {
 ```
 
 ```
-sudo time { 
-    mariadb -e "
+time { 
+    sudo mariadb -e "
         select * 
         from ecommerce.invoices_cs 
         where InvoiceNo='536365';"; 
@@ -215,8 +215,8 @@ sudo mariadb -e "
 ```
 
 ```
-sudo time {  
-    mariadb -e "
+time {  
+    sudo mariadb -e "
         select * 
         from ecommerce.invoices
         where InvoiceNo='536365';";
@@ -224,8 +224,8 @@ sudo time {
 ```
 
 ```
-sudo time {  
-    mariadb -e "
+time {  
+    sudo mariadb -e "
         select * 
         from ecommerce.invoices_cs
         where InvoiceNo='536365';";
