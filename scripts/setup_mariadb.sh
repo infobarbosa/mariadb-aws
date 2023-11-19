@@ -131,3 +131,4 @@ echo "`date -Is` - Verificando a carga invoices_cs."  >> /tmp/install.log
 
 sudo mariadb -e "select * from ecommerce.invoices_cs limit 10;" >> /tmp/install.log
 
+echo "`date -Is` - Setup de schema e carga de dados finalizada." >> /tmp/install.log
