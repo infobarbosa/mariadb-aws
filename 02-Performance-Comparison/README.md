@@ -80,7 +80,7 @@ Número de linhas
 wc -l /tmp/invoices.csv
 ```
 
-### `invoices`
+### Carga de dados `invoices`
 ```
 sudo mariadb -e "
     LOAD DATA INFILE '/tmp/invoices.csv'
@@ -96,7 +96,7 @@ Verificando a carga:
 sudo mariadb -e "select * from ecommerce.invoices limit 10;"
 ```
 
-### `invoices_cs`
+### Carga de dados `invoices_cs`
 ```
 sudo mariadb -e "
     LOAD DATA INFILE '/tmp/invoices.csv'
