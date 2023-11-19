@@ -7,6 +7,7 @@ Nesta sessão vamos instalar o Mariadb. Temos duas possibilidades: a instalaçã
 
 ## Instalação automática
 Caso você opte pela instalação automatizada, basta executar o script abaixo no terminal.
+
 > Atenção! Esse script presume que o sistema operacional de instalação seja Ubuntu.
 
 ```
