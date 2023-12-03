@@ -5,7 +5,10 @@ Github: [infobarbosa](https://github.com/infobarbosa)
 
 ## Objetivo
 Avaliar de forma rudimentar as performances do modelo de linha versus modelo colunar de armazenamento.
-> Atenção! Os comandos desse tutorial presumem que você está no diretório `mariadb-aws`.
+
+>### Atenção! 
+>   1. Os comandos desse tutorial presumem que você está no diretório `mariadb-aws`.
+>   2. Pule direto para **Teste 1** mais adiante caso você tenha optado pela instalação automática via script
 
 ## A base de dados
 Vamos criar um database `ecommerce`:
