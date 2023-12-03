@@ -101,7 +101,18 @@ Ao ser criado, seu ambiente aparece no console do Cloud9
 ```
 git clone https://github.com/infobarbosa/mariadb-aws.git
 ```
-![img/019_cloud9_clone_git.png](img/019_cloud9_clone_git.png)
+
+O output será algo assim:
+```
+voclabs:~/environment $ git clone https://github.com/infobarbosa/mariadb-aws.git
+Cloning into 'mariadb-aws'...
+remote: Enumerating objects: 166, done.
+remote: Counting objects: 100% (166/166), done.
+remote: Compressing objects: 100% (106/106), done.
+remote: Total 166 (delta 68), reused 137 (delta 39), pack-reused 0
+Receiving objects: 100% (166/166), 15.43 MiB | 17.21 MiB/s, done.
+Resolving deltas: 100% (68/68), done.
+```
 
 
 17. Navegue para o diretório raiz do projeto:
