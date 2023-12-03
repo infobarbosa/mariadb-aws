@@ -236,3 +236,49 @@ time {
         where InvoiceNo='536365';";
 }
 ```
+
+### Teste de carga
+
+Limpeza das tabelas:
+```
+sudo mariadb -e "truncate table ecommerce.invoices;";
+```
+```
+sudo mariadb -e "truncate table ecommerce.invoices_cs;";
+```
+
+Checagem do conteúdo após a limpeza:
+```
+sudo mariadb -e "select count(1) from ecommerce.invoices;";
+```
+```
+sudo mariadb -e "select count(1) from ecommerce.invoices_cs;";
+```
+	
+
+#### Medindo o tempo de carga:
+```
+time {
+sudo mariadb -e "
+	LOAD DATA INFILE '/tmp/invoices.csv'
+	INTO TABLE ecommerce.invoices
+	FIELDS TERMINATED BY ','
+	ENCLOSED BY '\"'
+	LINES TERMINATED BY '\n'
+	IGNORE 1 ROWS;"
+}
+
+```
+
+```
+time {
+sudo mariadb -e "
+	LOAD DATA INFILE '/tmp/invoices.csv'
+	INTO TABLE ecommerce.invoices_cs
+	FIELDS TERMINATED BY ','
+	ENCLOSED BY '\"'
+	LINES TERMINATED BY '\n'
+	IGNORE 1 ROWS;"
+}
+
+```
