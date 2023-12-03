@@ -153,6 +153,10 @@ The filesystem on /dev/nvme0n1p1 is now 39293179 (4k) blocks long.
 ```
 ### 19. Ao término da execução, é possível conferir o tamanho do disco através do comando `df -h`:
 
+```
+df -h
+```
+
 Output:
 
 ```
