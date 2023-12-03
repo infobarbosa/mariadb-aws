@@ -135,27 +135,36 @@ Esse script executa algumas tarefas administrativas importantes para esse labora
 O output será algo assim:
 
 ```
-voclabs:~/environment $ cd cassandra-aws/
-voclabs:~/environment/cassandra-aws (main) $ sh scripts/setup_cloud9_env.sh
+voclabs:~/environment $ cd mariadb-aws/
+voclabs:~/environment/mariadb-aws (main) $ sh scripts/setup_cloud9_env.sh
 ### Atualizando o sistema ###
 Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
-Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]       
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]                                                                                                    
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]     
 ...
+...
+### Reescrevendo a tabela de partição para uso full do espaço solicitado. ###
+CHANGED: partition=1 start=227328 old: size=20744159 end=20971487 new: size=314345439 end=314572767
+### Expandindo o tamanho do sistema de arquivos. ###
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/nvme0n1p1 is mounted on /; on-line resizing required
+old_desc_blocks = 2, new_desc_blocks = 19
+The filesystem on /dev/nvme0n1p1 is now 39293179 (4k) blocks long.
 ```
 19. Ao término da execução, é possível conferir o tamanho do disco através do comando `df -h`:
 
 Output:
 
 ```
-voclabs:~/environment/cassandra-aws (main) $ df -h
+voclabs:~/environment/mariadb-aws (main) $ df -h
 Filesystem       Size  Used Avail Use% Mounted on
-/dev/root        146G  6.6G  139G   5% /
+/dev/root        146G  6.7G  139G   5% /
 tmpfs            3.9G     0  3.9G   0% /dev/shm
 tmpfs            1.6G  876K  1.6G   1% /run
 tmpfs            5.0M     0  5.0M   0% /run/lock
 /dev/nvme0n1p15  105M  6.1M   99M   6% /boot/efi
 tmpfs            784M  4.0K  784M   1% /run/user/1000
-voclabs:~/environment/cassandra-aws (main) $ 
+voclabs:~/environment/mariadb-aws (main) $  
 ```
 
 Parabéns! Seu ambiente Cloud9 está pronto pra uso!
