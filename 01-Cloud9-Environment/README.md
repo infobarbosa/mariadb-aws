@@ -6,7 +6,7 @@ Github: [infobarbosa](https://github.com/infobarbosa)
 
 Neste laboratório faremos uso recorrente do serviço Cloud9.
 
-1. Verifique a região no topo à direita do console AWS, normalmente é **Norte da Virgínia**.<br>
+### 1. Verifique a região no topo à direita do console AWS, normalmente é **Norte da Virgínia**.<br>
 **Não** altere essa configuração!
 <div align="left">
 
@@ -14,21 +14,21 @@ Neste laboratório faremos uso recorrente do serviço Cloud9.
 
 </div>
 
-2. Abra o console da AWS e na caixa de busca superior digite **Cloud9**.
+### 2. Abra o console da AWS e na caixa de busca superior digite **Cloud9**.
 <div align="left">
 
 ![img/002_cloud9_barra_de_buscas.png](img/002_cloud9_barra_de_buscas.png)
 
 </div>
 
-3. Clique no link Cloud9
+### 3. Clique no link Cloud9
 <div align="left">
 
 ![img/003_cloud9_link.png](img/003_cloud9_link.png)
 
 </div>
 
-4. Clique em **Criar ambiente**
+### 4. Clique em **Criar ambiente**
 <div align="left">
 
 ![img/004_cloud9_criar_ambiente.png](img/004_cloud9_criar_ambiente.png)
@@ -49,37 +49,37 @@ Neste laboratório faremos uso recorrente do serviço Cloud9.
 >![img/007_cloud9_console.png](img/007_cloud9_console.png)
 ---
 
-5. Será exibida a tela **Criar ambiente** confirme seguir.
+### 5. Será exibida a tela **Criar ambiente** confirme seguir.
 
 ![img/008_cloud9_tela_criar_ambiente.png](img/008_cloud9_tela_criar_ambiente.png)
 
-6. Campo **Nome**: informe `lab`.
+### 6. Campo **Nome**: informe `lab`.
 
 ![img/009_cloud9_tela_criar_ambiente_nome.png](img/009_cloud9_tela_criar_ambiente_nome.png)
 
-7. Campo **Descrição**: deixe em branco.
+### 7. Campo **Descrição**: deixe em branco.
 
-8. **Tipo de ambiente**: selecione `Nova instância do EC2`.
+### 8. **Tipo de ambiente**: selecione `Nova instância do EC2`.
 
 ![img/010_cloud9_tela_criar_ambiente_tipo_ambiente.png](img/010_cloud9_tela_criar_ambiente_tipo_ambiente.png)
 
-9. **Tipo instância**: selecione `t3.large`
+### 9. **Tipo instância**: selecione `t3.large`
 
 ![img/011_cloud9_tela_criar_ambiente_tipo_instancia_t3.large.png](img/011_cloud9_tela_criar_ambiente_tipo_instancia_t3.large.png)
 
-10. **Plataforma**: selecione `Ubuntu Server 22.04 LTS` 
+### 10. **Plataforma**: selecione `Ubuntu Server 22.04 LTS` 
 
 ![img/012_cloud9_tela_criar_ambiente_plataforma.png](img/012_cloud9_tela_criar_ambiente_plataforma.png)
 
-11. **Tempo limite**: selecione `1 hora`
+### 11. **Tempo limite**: selecione `1 hora`
 
 ![img/013_cloud9_tela_criar_ambiente_tempo_limite.png](img/013_cloud9_tela_criar_ambiente_tempo_limite.png)
 
-12. **Conexão**: deixe selecionado `Secure Shell (SSH)`
+### 12. **Conexão**: deixe selecionado `Secure Shell (SSH)`
 
 ![img/014_cloud9_tela_criar_ambiente_conexao_ssh.png](img/014_cloud9_tela_criar_ambiente_conexao_ssh.png)
 
-13. Clique em **Criar** ao final da página
+### 13. Clique em **Criar** ao final da página
 
 ![img/015_cloud9_tela_criar_ambiente_botao_criar.png](img/015_cloud9_tela_criar_ambiente_botao_criar.png)
 
@@ -88,15 +88,15 @@ Neste laboratório faremos uso recorrente do serviço Cloud9.
 Ao ser criado, seu ambiente aparece no console do Cloud9
 ![img/016_cloud9_ambiente_criado.png](img/016_cloud9_ambiente_criado.png)
 
-14. Para abrir o IDE do ambiente criado, clique em "Em aberto" conforme a seguir:
+### 14. Para abrir o IDE do ambiente criado, clique em "Em aberto" conforme a seguir:
 
 ![img/017_cloud9_abrir_ide.png](img/017_cloud9_abrir_ide.png)
 
-15. Uma nova aba será aberta com o IDE do Cloud9 criado:
+### 15. Uma nova aba será aberta com o IDE do Cloud9 criado:
 
 ![img/018_cloud9_ide_aberta.png](img/018_cloud9_ide_aberta.png)
 
-16. Clone do git deste laboratório:
+### 16. Clone do git deste laboratório:
 
 ```
 git clone https://github.com/infobarbosa/mariadb-aws.git
@@ -115,13 +115,13 @@ Resolving deltas: 100% (68/68), done.
 ```
 
 
-17. Navegue para o diretório raiz do projeto:
+### 17. Navegue para o diretório raiz do projeto:
 
 ```
 cd mariadb-aws/
 ```
 
-18. Execute o script `setup_cloud9_env.sh` conforme a seguir:
+### 18. Execute o script `setup_cloud9_env.sh` conforme a seguir:
 ```
 sh scripts/setup_cloud9_env.sh
 ```
@@ -151,7 +151,7 @@ Filesystem at /dev/nvme0n1p1 is mounted on /; on-line resizing required
 old_desc_blocks = 2, new_desc_blocks = 19
 The filesystem on /dev/nvme0n1p1 is now 39293179 (4k) blocks long.
 ```
-19. Ao término da execução, é possível conferir o tamanho do disco através do comando `df -h`:
+### 19. Ao término da execução, é possível conferir o tamanho do disco através do comando `df -h`:
 
 Output:
 
