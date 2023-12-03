@@ -135,7 +135,7 @@ sudo mariadb -e "
     from ecommerce.invoices_cs;"
 ```
 
-Medindo o tempo:
+#### Medindo o tempo:
 ```
 time { 
     sudo mariadb -e "
@@ -174,6 +174,7 @@ sudo mariadb -e "
     where InvoiceNo='536365';"
 ```
 
+#### Medindo o tempo:
 ```
 time { 
     sudo mariadb -e "
@@ -217,6 +218,7 @@ sudo mariadb -e "
     where InvoiceNo='536365';"
 ```
 
+#### Medindo o tempo:
 ```
 time {  
     sudo mariadb -e "
